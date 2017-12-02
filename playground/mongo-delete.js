@@ -14,15 +14,15 @@ console.log("Connected to Mongodb Server")
 // 	console.log(remove)
 // })
 
-db.collection('Todos').deleteOne({ //deletes only one selected field todo
-	text: "learn to code"
-}).then( (remove)=>{
-	console.log(remove)
-})
+// db.collection('Todos').deleteOne({ //deletes only one selected field todo
+// 	text: "learn to code"
+// }).then( (remove)=>{
+// 	console.log(remove)
+// })
 
-db.collection('Todos').findOneAndDelete({completed: false}).then( (result) =>{
- console.log(result);
-})
+// db.collection('Todos').findOneAndDelete({completed: false}).then( (result) =>{
+//  console.log(result);
+// })
 
 // db.close();  //closes the connection with the mongodb server
 })   
