@@ -6,7 +6,7 @@ const {Todo} = require('./../models/todo');
 
 
 beforeEach((done) => {
-  Todo.remove({}).then(() => done());
+  Todo.remove({}).then(() => done());  // removes all current todos in our database first
 });
 
 describe('POST /todos', () => {

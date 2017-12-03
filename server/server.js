@@ -7,13 +7,15 @@ var {User} = require('./models/user');
 
 var app = express();
 
-app.use(bodyParser.json());
+
+var appBody = app.use(bodyParser.json());  //middleware, this returns post made on the body in JSON format. body-parser automatically calls next() for you so it can move on. 
 
 app.post('/todos', (req, res) => {
+	// console.log(req.body); req.body is where the post was made in Postman
   var todo = new Todo({
     text: req.body.text
   });
-
+console.log(todo);
   todo.save().then((doc) => {
     res.send(doc);
   }, (e) => {
@@ -21,12 +23,20 @@ app.post('/todos', (req, res) => {
   });
 });
 
-app.get('/', (req, res) => res.send('Hello World!'))
+app.get('/todos', (req, res) => {
+	Todo.find().then( (todos) => {
+		res.send({todos: todos});
+	}, (e) => {
+		res.status(400).send(e)
+	})
+})
 
 app.listen(3000, () => {
   console.log('Started on port 3000');
 });
 
 
-
+module.exports = {
+	app
+}
 //middleware custom middleware since the return value is going to be a function, takes json and puts it into an object

@@ -7,12 +7,6 @@ var Todo = mongoose.model('Todo', {
     minlength: 1,
     trim: true
   },
- challenge: {
-    type: String,
-    required: true,
-    minlength: 10,
-    trim: true
-  },
   completed: {
     type: Boolean,
     default: false
